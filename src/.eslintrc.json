@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": ["typingdna.js"],
+      "rules": {
+        "no-unused-expressions": "off",
+        "no-undef": "off",
+        "no-restricted-globals": "off"
+      }
+    }
+  ]
+}
