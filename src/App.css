@@ -1,9 +1,17 @@
 .App {
   text-align: center;
+  /* height: 800px; */
   height: 100%;
   flex-direction: column;
   display: flex;
   background-color: beige;
-  margin: 0;
   padding: 0;
+  /* width: 800px; */
+  width: 100%;
+  margin: 50px auto;
+  box-shadow: 0 4px 0px #333;
+  border-radius: 15px;
+  position: absolute;
+  left: 0;
+  overflow: hidden;
 }

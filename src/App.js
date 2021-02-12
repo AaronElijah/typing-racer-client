@@ -1,73 +1,58 @@
 import "./App.css";
 
-import {
-  Box,
-  Button,
-  Container,
-  TextField,
-  Typography,
-} from "@material-ui/core";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-// import { TypeInputFormContainer } from "./client/TypeInputFormContainer";
-import { TypingDNA } from "./typingdna";
-import axios from "axios";
+import { Container } from "@material-ui/core";
+import { Header } from "./client/Header";
+import { LoginContainer } from "./client/LoginContainer";
+import { SignupContainer } from "./client/SignupContainer";
+import { TypeInputContainer } from "./client/TypeInputContainer";
+import { withContext } from "./data/Context";
 
-const signUp = ({ typingPattern }) => {
-  axios({
-    url: "http://localhost:8000/signup",
-    method: "post",
-    data: {
-      email: "fake@email.com",
-      name: "fakename",
-      username: "fakeusername",
-      typing_patterns: typingPattern,
-    },
-  })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(error.response);
-      console.log(error.request);
-    });
-};
+const HeaderWithContext = withContext(Header);
+const TypeInputContainerWithContext = withContext(TypeInputContainer);
+const SignupContainerWithContext = withContext(SignupContainer);
+const LoginContainerWithContext = withContext(LoginContainer);
 
 const App = () => {
-  var tdna = new TypingDNA();
-  tdna.addTarget("text-id");
-
+  const sentenceToCopy = "Verify this sentence";
   return (
-    <div className="App">
-      <Container
-        maxWidth="md"
-        style={{ backgroundColor: "lightskyblue", height: "100%" }}
-      >
-        <Box
-          display="flex"
-          alignItems="center"
-          flexDirection="row"
-          justifyContent="center"
-        >
-          <Typography paragraph color="primary" variant="body1" display="block">
-            {"Copy this text into the textfield"}
-          </Typography>
-          <TextField id="text-id" />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              const typingPattern = tdna.getTypingPattern({
-                type: 0,
-                targetId: "text-id",
-              });
-              signUp({
-                typingPattern: typingPattern,
-              });
+    <BrowserRouter>
+      <div className="app">
+        <HeaderWithContext />
+
+        <div>
+          <Container
+            maxWidth="xl"
+            style={{
+              backgroundColor: "lightskyblue",
+              height: "1000px",
+              width: "100%",
             }}
-          />
-        </Box>
-      </Container>
-    </div>
+          >
+            <Switch>
+              <Route
+                exact
+                path="/verify"
+                render={() => (
+                  <TypeInputContainerWithContext
+                    sentenceToCopy={sentenceToCopy}
+                  />
+                )}
+              />
+              <Route
+                path="/signup"
+                render={() => <SignupContainerWithContext />}
+              />
+              <Route
+                path="/login"
+                render={() => <LoginContainerWithContext />}
+              />
+            </Switch>
+          </Container>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 };
 
