@@ -13,7 +13,7 @@ export const GeneralPaperContainer = ({ render }) => {
       <div>
         <Paper
           elevation={6}
-          style={{ maxWidth: "400px", minWidth: "300px", minHeight: "300px" }}
+          style={{ maxWidth: "600px", minWidth: "600px", minHeight: "600px" }}
         >
           <Box
             display="flex"

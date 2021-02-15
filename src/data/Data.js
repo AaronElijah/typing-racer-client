@@ -1,3 +1,4 @@
+import { HTTPStatus } from "../constants/constants";
 import axios from "axios";
 
 export class Data {
@@ -11,7 +12,12 @@ export class Data {
     }).catch((error) => {
       return error.response;
     });
-    return response;
+
+    if (response.status === HTTPStatus.ok) {
+      return response.data;
+    } else {
+      return null;
+    }
   };
 
   login = async (email) => {
@@ -24,19 +30,40 @@ export class Data {
     }).catch((error) => {
       return error.response;
     });
+
     return response;
   };
 
-  verifyUserTypingPattern = async ({ typingPattern, email }) => {
+  verifyUserTypingPattern = async (typingPattern, email) => {
     const response = await axios({
       url: "http://localhost:8000/verify",
       method: "post",
       data: {
         typing_pattern: typingPattern,
-        // id: email,
-        id: "fake@email.com",
+        email: email,
       },
+    }).catch((error) => {
+      return error.response;
     });
-    return response.data;
+    if (response.status === HTTPStatus.ok) {
+      return response.data;
+    } else {
+      return null;
+    }
+  };
+
+  getSentence = async () => {
+    const response = await axios({
+      url: "http://localhost:8000/sentence",
+      method: "get",
+    }).catch((error) => {
+      return error.response;
+    });
+    console.log(response);
+    if (response.status === HTTPStatus.ok) {
+      return response.data;
+    } else {
+      return null;
+    }
   };
 }

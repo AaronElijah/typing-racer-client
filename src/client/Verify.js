@@ -1,10 +1,25 @@
-import { Box, Button, TextField, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Snackbar,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 
 import { GeneralPaperContainer } from "./GeneralPaperContainer";
+import MuiAlert from "@material-ui/lab/Alert";
 import React from "react";
 
-export const TypeInput = (props) => {
-  const { onSubmit, sentenceToCopy, textFieldId, textFieldRef } = props;
+export const Verify = (props) => {
+  const {
+    onSubmit,
+    sentenceToCopy,
+    textFieldId,
+    textFieldRef,
+    openTypeInputSnackbar,
+    handleCloseSnackbar,
+    snackbarMessage,
+  } = props;
   return (
     <GeneralPaperContainer
       render={
@@ -15,6 +30,16 @@ export const TypeInput = (props) => {
           justifyContent="center"
           justifyItems="center"
         >
+          <Snackbar
+            open={openTypeInputSnackbar}
+            autoHideDuration={6000}
+            onClose={handleCloseSnackbar}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <MuiAlert onClose={handleCloseSnackbar} severity="success">
+              {snackbarMessage}
+            </MuiAlert>
+          </Snackbar>
           <Typography
             paragraph
             color="primary"

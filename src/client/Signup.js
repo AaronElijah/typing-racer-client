@@ -1,10 +1,23 @@
-import { Box, Button, TextField, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Snackbar,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 
 import { GeneralPaperContainer } from "./GeneralPaperContainer";
+import MuiAlert from "@material-ui/lab/Alert";
 import React from "react";
 
 export const Signup = (props) => {
-  const { onSubmitSignup, textFieldRef } = props;
+  const {
+    onSubmitSignup,
+    textFieldRef,
+    openSnackbar,
+    handleCloseSnackbar,
+    signupState,
+  } = props;
   return (
     <GeneralPaperContainer
       render={
@@ -15,6 +28,21 @@ export const Signup = (props) => {
           justifyContent="center"
           justifyItems="center"
         >
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={6000}
+            onClose={handleCloseSnackbar}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <MuiAlert
+              onClose={handleCloseSnackbar}
+              severity={signupState === "failed" ? "error" : "success"}
+            >
+              {signupState
+                ? "Great - let's verify your typing pattern"
+                : "Whoops, something went wrong"}
+            </MuiAlert>
+          </Snackbar>
           <Typography variant="h5" align="center">
             Wanna play our game? Great! Tell us your email
           </Typography>

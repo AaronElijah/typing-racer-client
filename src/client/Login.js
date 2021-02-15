@@ -16,6 +16,8 @@ export const Login = (props) => {
     textFieldRef,
     openLoginSnackbar,
     handleCloseSnackbar,
+    loginState,
+    snackbarMessage,
   } = props;
   return (
     <GeneralPaperContainer
@@ -33,8 +35,15 @@ export const Login = (props) => {
             onClose={handleCloseSnackbar}
             anchorOrigin={{ vertical: "top", horizontal: "center" }}
           >
-            <MuiAlert onClose={handleCloseSnackbar} severity="success">
-              Great! Now verify your typing pattern
+            <MuiAlert
+              onClose={handleCloseSnackbar}
+              severity={
+                loginState !== null && loginState.search("failed") > -1
+                  ? "error"
+                  : "success"
+              }
+            >
+              {snackbarMessage}
             </MuiAlert>
           </Snackbar>
           <Typography variant="h5" align="center">

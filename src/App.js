@@ -3,23 +3,18 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Container } from "@material-ui/core";
+import { GameContainer } from "./client/GameContainer";
 import { Header } from "./client/Header";
 import { LoginContainer } from "./client/LoginContainer";
+import { PrivateRoute } from "./routing/PrivateRoute";
 import { SignupContainer } from "./client/SignupContainer";
-import { TypeInputContainer } from "./client/TypeInputContainer";
-import { withContext } from "./data/Context";
-
-const HeaderWithContext = withContext(Header);
-const TypeInputContainerWithContext = withContext(TypeInputContainer);
-const SignupContainerWithContext = withContext(SignupContainer);
-const LoginContainerWithContext = withContext(LoginContainer);
+import { VerifyContainer } from "./client/VerifyContainer";
 
 const App = () => {
-  const sentenceToCopy = "Verify this sentence";
   return (
     <BrowserRouter>
       <div className="app">
-        <HeaderWithContext />
+        <Header />
 
         <div>
           <Container
@@ -31,23 +26,10 @@ const App = () => {
             }}
           >
             <Switch>
-              <Route
-                exact
-                path="/verify"
-                render={() => (
-                  <TypeInputContainerWithContext
-                    sentenceToCopy={sentenceToCopy}
-                  />
-                )}
-              />
-              <Route
-                path="/signup"
-                render={() => <SignupContainerWithContext />}
-              />
-              <Route
-                path="/login"
-                render={() => <LoginContainerWithContext />}
-              />
+              <PrivateRoute exact path="/verify" component={VerifyContainer} />
+              <PrivateRoute exact path="/play" component={GameContainer} />
+              <Route path="/signup" render={() => <SignupContainer />} />
+              <Route path="/login" render={() => <LoginContainer />} />
             </Switch>
           </Container>
         </div>

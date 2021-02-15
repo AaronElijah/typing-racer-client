@@ -1,9 +1,12 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@material-ui/core";
+import React, { useContext } from "react";
 
+import { Context } from "../data/Context";
 import { Link } from "react-router-dom";
-import React from "react";
 
-export const Header = (props) => {
+export const Header = () => {
+  const globalStore = useContext(Context);
+  const { state, dispatch } = globalStore;
   return (
     <Box display="flex" justifyContent="center">
       <AppBar position="fixed">
@@ -12,16 +15,47 @@ export const Header = (props) => {
             Welcome to the Type Racer with Keyboard
           </Typography>
           <Box>
-            <Button color="inherit" size="large">
-              <Link className="signin" to="/signup" style={{ color: "white" }}>
-                Sign Up
-              </Link>
-            </Button>
-            <Button color="inherit" size="large">
-              <Link className="signin" to="/login" style={{ color: "white" }}>
-                Log In
-              </Link>
-            </Button>
+            {state.isAuthenticated ? (
+              <React.Fragment>
+                <span>Welcome, {state.userEmail}!</span>
+                <Button
+                  color="inherit"
+                  size="large"
+                  onClick={() => {
+                    dispatch({ type: "auth/logout" });
+                  }}
+                >
+                  <Link
+                    className="logout"
+                    to="/login"
+                    style={{ color: "white" }}
+                  >
+                    Log Out
+                  </Link>
+                </Button>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <Button color="inherit" size="large">
+                  <Link
+                    className="signup"
+                    to="/signup"
+                    style={{ color: "white" }}
+                  >
+                    Sign Up
+                  </Link>
+                </Button>
+                <Button color="inherit" size="large">
+                  <Link
+                    className="login"
+                    to="/login"
+                    style={{ color: "white" }}
+                  >
+                    Log In
+                  </Link>
+                </Button>
+              </React.Fragment>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
