@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 export const VerifyContainer = () => {
   const sentenceToCopy =
-    "Verify this long sentence - hopefully a longer sentence means quicker verification";
+    "Type this long sentence - TypingDNA Recorder records the way that you type and verifies your identity on subsequent sentences that you type";
   const globalStore = useContext(Context);
   const { state, dispatch } = globalStore;
   const dataClient = new Data();
@@ -18,7 +18,7 @@ export const VerifyContainer = () => {
   const [shouldOpenSnackbar, setShouldOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("unverified");
 
-  const textFieldId = "signup-id";
+  const textFieldId = "signup-textfield-input";
   const textFieldRef = useRef(null);
 
   // Might want to useEffect the tdna so that we garbage collect the old one

@@ -5,9 +5,7 @@ const initialState = {
   isAuthenticated: false,
   isTypingVerified: false,
   numberOfVerificationAttempts: 0,
-  score: 0,
-  isGameOver: false,
-  isGameStarted: false,
+  highScore: 0,
 };
 
 const Context = createContext(initialState);
@@ -40,6 +38,12 @@ const StateProvider = (props) => {
         };
       case "auth/logout":
         return initialState;
+      case "game/highscore":
+        if (action.score > state.highScore) {
+          return { ...state, highScore: action.score };
+        } else {
+          return state;
+        }
       default:
         return state;
     }

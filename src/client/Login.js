@@ -47,7 +47,7 @@ export const Login = (props) => {
             </MuiAlert>
           </Snackbar>
           <Typography variant="h5" align="center">
-            Welcome to typing game!
+            Welcome to Typing Game built with TypingDNA authentication inbuilt!
           </Typography>
           <Typography variant="h6" align="center">
             Let's login you in

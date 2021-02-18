@@ -6,7 +6,7 @@ import { HTTPStatus } from "../constants/constants";
 import { Login } from "./Login";
 import { useHistory } from "react-router-dom";
 
-export const LoginContainer = (props) => {
+export const LoginContainer = () => {
   const globalStore = useContext(Context);
   const { state, dispatch } = globalStore;
   const dataClient = new Data();

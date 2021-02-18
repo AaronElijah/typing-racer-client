@@ -1,7 +1,9 @@
 import {
   Box,
-  Button,
-  Container,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Grid,
   TextField,
   Typography,
@@ -17,8 +19,17 @@ export const Game = (props) => {
     currentWordIndex,
     handleChange,
     textFieldRef,
-    isGettingSentence,
     isEachWordCorrectArray,
+    targetWordSpeed,
+    isGameOver,
+    handleCloseBackdrop,
+    handleExtraKeysDown,
+    onDialogOpening,
+    textFieldId,
+    dialogMessage,
+    isWin,
+    isFailedTyping,
+    hasCheckedTypingPattern,
   } = props;
   return (
     <GeneralPaperContainer
@@ -68,38 +79,50 @@ export const Game = (props) => {
             })}
           </Grid>
           <TextField
+            id={textFieldId}
             multiline
             autoFocus
             autoComplete="off"
-            id="mui-theme-provider-standard-input"
             helperText="Type the sentence as quickly and correctly as you can"
-            inputProps={{ style: { fontSize: 20, lineHeight: "30px" } }}
+            inputProps={{
+              style: { fontSize: 20, lineHeight: "30px" },
+              autoFocus: true,
+            }}
             style={{ width: "500px", marginBottom: "35px", marginTop: "70px" }}
             onChange={handleChange}
             inputRef={textFieldRef}
-            disabled={isGettingSentence}
           ></TextField>
-          {/* <Typography
-            variant="subtitle1"
-            align="center"
-            style={{ marginBottom: "35px" }}
-          >
-            Press Enter key when done
-          </Typography> */}
           <Grid container justify="space-around" spacing={7}>
             <Box flexDirection="column" alignItems="center">
               <Typography variant="h1" align="center">
-                100
+                {targetWordSpeed}
               </Typography>
               <Typography align="center">WPM Target</Typography>
             </Box>
             <Box flexDirection="column" alignItems="center">
               <Typography variant="h1" align="center">
-                {stopwatchTime}
+                {Math.round(stopwatchTime)}
               </Typography>
               <Typography>Seconds</Typography>
             </Box>
           </Grid>
+          <Dialog
+            open={
+              isGameOver &&
+              (hasCheckedTypingPattern === true ||
+                stopwatchTime <= 0 ||
+                isFailedTyping === true)
+            }
+            style={{ color: "#fff" }}
+            onClick={handleCloseBackdrop}
+            onKeyDown={handleExtraKeysDown}
+            onEnter={onDialogOpening}
+          >
+            <DialogTitle>{isWin === true ? "Excellent!" : "Lost!"}</DialogTitle>
+            <DialogContent dividers>
+              <DialogContentText>{dialogMessage}</DialogContentText>
+            </DialogContent>
+          </Dialog>
         </Box>
       }
     />

@@ -59,7 +59,6 @@ export class Data {
     }).catch((error) => {
       return error.response;
     });
-    console.log(response);
     if (response.status === HTTPStatus.ok) {
       return response.data;
     } else {

@@ -44,10 +44,10 @@ export const Signup = (props) => {
             </MuiAlert>
           </Snackbar>
           <Typography variant="h5" align="center">
-            Wanna play our game? Great! Tell us your email
+            Wanna play our game? Great! Give us a fake or demo email to try
           </Typography>
           <Typography variant="h6" align="center">
-            (Don't worry: we won't email you a thing)
+            (We will then enroll your typing using TypingDNA)
           </Typography>
           <TextField
             id="signup-email-textfield"

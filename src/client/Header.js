@@ -12,7 +12,7 @@ export const Header = () => {
       <AppBar position="fixed">
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <Typography edge="start" flexgrow={1} variant="h6">
-            Welcome to the Type Racer with Keyboard
+            Welcome to the Type Racer with TypingDNA authentication
           </Typography>
           <Box>
             {state.isAuthenticated ? (
