@@ -2,7 +2,7 @@
 
 Welcome! Thanks for checking out my project. This game was built for the DeveloperWeek 2021 Hackathon TypingDNA challenge hosted by DevPost and sponsored by TypingDNA. 
 
-## What's your game?
+## What's the game?
 
 My game is very simple - you sign up with any username and then TypingDNA verifies your typing pattern. This is so the game can recognise who you are before signing in. Once you've signed, the aim is to type the sentences that come up to score a higher typing speed. You have to type the sentences quickly and correctly as points will be deducted if you type words wrong. If you fail to type fast enough altogether, you will fail! And if that wasn't enough of a challenge, even if you type correctly, TypingDNA must verify the typing pattern you produced from making the sentence. If TypingDNA doesn't think that it was you, then you fail!
 
