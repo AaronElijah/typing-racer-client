@@ -21,9 +21,15 @@ The assets come from [Material UI]{https://material-ui.com/}
 
 In the project directory, you can run:
 
+### `npm install`
+
+Assuming you have `npm` installed on your system, run this command in the project root directory.
+
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser. Make sure you run the frontend while also running the backend locally. The backend is at https://github.com/AaronElijah/typing-racer-api.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. Make sure you run the frontend while also running the backend locally.
+
+The backend is at [Typing Racer API]{https://github.com/AaronElijah/typing-racer-api}.
 
 
