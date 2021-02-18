@@ -1,4 +1,4 @@
-# Getting Started with Typing Racer built with TypingDNA 
+# Typing Racer built with TypingDNA (frontend)
 
 Welcome! Thanks for checking out my project. This game was built for the DeveloperWeek 2021 Hackathon TypingDNA challenge hosted by DevPost and sponsored by TypingDNA. 
 
@@ -17,7 +17,9 @@ Just a computer with a keyboard. Follow the instructions to get yourself set up 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 The assets come from [Material UI](https://material-ui.com/)
 
-## Available Scripts
+## Demo locally
+
+Follow the instructions in [Typing Racer API](https://github.com/AaronElijah/typing-racer-api) to get started creating the server.
 
 In the project directory, you can run:
 
