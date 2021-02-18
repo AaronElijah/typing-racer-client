@@ -12,10 +12,10 @@ I have always been a fan of type racers and find them a great way to improve key
 
 ## Will I need anything to play the game?
 
-Just a computer with a keyboard. Follow the instructions to get yourself set up with a Free Developer account at TypingDNA (instructions on [Typing Racer API]{https://github.com/AaronElijah/typing-racer-api})
+Just a computer with a keyboard. Follow the instructions to get yourself set up with a Free Developer account at TypingDNA (instructions on [Typing Racer API](https://github.com/AaronElijah/typing-racer-api))
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-The assets come from [Material UI]{https://material-ui.com/}
+The assets come from [Material UI](https://material-ui.com/)
 
 ## Available Scripts
 
@@ -30,6 +30,6 @@ Assuming you have `npm` installed on your system, run this command in the projec
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. Make sure you run the frontend while also running the backend locally.
 
-The backend is at [Typing Racer API]{https://github.com/AaronElijah/typing-racer-api}.
+The backend is at [Typing Racer API](https://github.com/AaronElijah/typing-racer-api).
 
 
